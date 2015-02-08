@@ -29,14 +29,8 @@ Datetime <- paste(as.Date(subFile$Date), subFile$Time)
 subFile$Datetime <- as.POSIXct(Datetime)
 
 ## create the Global Active Power plot
-with(subFile, {
-    plot(Sub_metering_1~Datetime, type="l", xlab="", ylab="Global Active Power (kilowatts)")
-    lines(Sub_metering_2~Datetime, col="Red")
-    lines(Sub_metering_3~Datetime, col="Blue")
-})
-legend("topright", col=c("black", "red", "blue"), lty=1, lwd=2,
-       legend=c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
+plot(subFile$Global_active_power~subFile$Datetime, type="l", xlab="", ylab="Global Active Power (kilowatts)")
 
 ## create a png file of the plot and close the PNG device
-dev.copy(png, file="plot3.png")
+dev.copy(png, file="plot2.png")
 dev.off()
